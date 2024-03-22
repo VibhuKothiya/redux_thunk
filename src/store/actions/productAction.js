@@ -44,5 +44,17 @@ export const addProduct = (productData) => {
     }
 }
 
+//update-data
+export const update = (data) =>({
+    type : ADD_PRODUCT,
+    payload : data,
+})
 
+
+export const updateData = (id) => {
+    return async (dispatch) => {
+        const res = await axios.get(`http://localhost:3003/product/${id}`);
+        dispatch(update(res.data))
+    }
+}
 

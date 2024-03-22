@@ -1,4 +1,4 @@
-import { DELETE_PRODUCT, GET_PRODUCT } from "../type";
+import { DELETE_PRODUCT, GET_PRODUCT, ADD_PRODUCT, VIEW_PRODUCT } from "../type";
 
 let initialState = {
     product : [],
@@ -21,6 +21,22 @@ export const productReducer = (state = initialState, action) =>{
                     product : state.product.filter(item => item.id !== action.payload),                    
                     loading : false    
                 }; 
+
+            case ADD_PRODUCT:
+                const newProduct = [...state.product, action.payload]
+                return{
+                    ...state,
+                    product : newProduct,
+                    loading : false
+                } 
+                
+            case VIEW_PRODUCT:
+                return{
+                    ...state,
+                    product : action.payload,
+                    loading : false
+                } 
+
 
             default:
                 return state;

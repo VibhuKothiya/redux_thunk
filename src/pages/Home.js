@@ -12,6 +12,7 @@ import Paper from '@mui/material/Paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteProduct, getProduct } from '../store/actions/productAction';
 import Navbar from '../component/Navbar';
+import FormModal from '../component/FormModal';
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -62,7 +63,7 @@ const Home = () => {
   useEffect(() => {
     distpatch(getProduct())
     console.log(product);
-  }, [distpatch]);
+  }, []);
 
   //delete-data
   const handleDelet = (id) => {
@@ -72,7 +73,13 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
+    <section style={{marginBottom: '20px'}}>
+    <Navbar />
+    </section>
+    <section style={{marginBottom: '20px'}}>
+    <FormModal />
+    </section>
+
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
           <TableHead>
@@ -95,7 +102,7 @@ const Home = () => {
                 <StyledTableCell align="center">{val.description}</StyledTableCell>
                 <StyledTableCell align="center">
                   <Button style={{ margin: '2px' }} variant="contained" color='secondary' onClick={() => handleDelet(val.id)}>Delete</Button>
-                  <Button variant="contained" color='primary'>Edit</Button>
+                  <Button variant="contained" color='primary' onClick={() => viewData(val.id)}>Edit</Button>
                 </StyledTableCell>
               </StyledTableRow>
             ))}

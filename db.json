@@ -41,6 +41,13 @@
       "price": 10.99,
       "description": "Power strip surge protector for sensitive electronics.",
       "category": "Electronics"
+    },
+    {
+      "id": "430c",
+      "name": "saree",
+      "price": "344",
+      "description": "this is saree",
+      "category": "catagory A"
     }
   ]
 }
