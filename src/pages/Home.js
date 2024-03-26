@@ -13,6 +13,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteProduct, getProduct } from '../store/actions/productAction';
 import Navbar from '../component/Navbar';
 import FormModal from '../component/FormModal';
+import { viewData } from '../store/actions/productAction';
+
+
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -54,8 +57,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 // ];
 
 const Home = () => {
+  const [open, setOpen] = React.useState(false);
 
   const distpatch = useDispatch();
+  const oldData = useSelector((state) => state.Data.data);
 
   //get-data
   const { product, error, loading } = useSelector(state => state.Data)
@@ -70,6 +75,15 @@ const Home = () => {
     distpatch(deleteProduct(id));
     distpatch(getProduct());
   }
+
+  //view-data
+  const view_Data = (id) => {
+    setOpen(true);
+    distpatch(viewData(id))
+    
+  }
+
+   
 
   return (
     <>
@@ -102,13 +116,17 @@ const Home = () => {
                 <StyledTableCell align="center">{val.description}</StyledTableCell>
                 <StyledTableCell align="center">
                   <Button style={{ margin: '2px' }} variant="contained" color='secondary' onClick={() => handleDelet(val.id)}>Delete</Button>
-                  <Button variant="contained" color='primary' onClick={() => viewData(val.id)}>Edit</Button>
+                  <Button variant="outlined" onClick={() => view_Data(val.id)}>
+                Edit
+            </Button>
+                  {/* <Button variant="contained" color='primary' onClick={() => view_Data(val.id)}>Edit</Button> */}
                 </StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <FormModal/>
     </>
 
   )

@@ -48,6 +48,13 @@
       "price": "344",
       "description": "this is saree",
       "category": "catagory A"
+    },
+    {
+      "id": "bbb7",
+      "name": "Ring",
+      "price": "400",
+      "description": "this is ring",
+      "category": "B"
     }
   ]
 }

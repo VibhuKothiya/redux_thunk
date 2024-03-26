@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -7,12 +7,15 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { addProduct } from '../store/actions/productAction';
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 export default function FormModal() {
     const dispatch = useDispatch()
     const [open, setOpen] = React.useState(false);
     const [data, setData] = useState({});
+    const {id} = useParams()
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -32,6 +35,14 @@ export default function FormModal() {
         dispatch(addProduct(data))
         setOpen(false);
     }
+
+    useEffect(() => {
+        if(id){
+          axios.get(`http://localhost:3003/product/${id}`).then((res)=>{
+                setData(res.data)
+          })
+        }
+      }) 
 
     return (
         <React.Fragment>
@@ -53,12 +64,11 @@ export default function FormModal() {
                         handleClose();
                     },
                 }}
-            >
-                                
+            >                                
                 <DialogContent>
-                    <TextField id="standard-basic" name='name' label="Name" variant="standard" onChange={handleInput}/><br />                 
-                    <TextField id="standard-basic" name='price' label="Price" variant="standard" onChange={handleInput}/><br />
-                    <TextField id="standard-basic" name='description' label="Description" variant="standard" onChange={handleInput}/><br />
+                    <TextField id="standard-basic" name='name' label="Name" variant="standard" onChange={handleInput} value={data.name}/><br />                 
+                    <TextField id="standard-basic" name='price' label="Price" variant="standard" onChange={handleInput} value={data.price}/><br />
+                    <TextField id="standard-basic" name='description' label="Description" variant="standard" onChange={handleInput} value={data.description}/><br />
                     <TextField id="standard-basic" name='category' label="Catagory" variant="standard" onChange={handleInput}/><br />
                     
                 </DialogContent>

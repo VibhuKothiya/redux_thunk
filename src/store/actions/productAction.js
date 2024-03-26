@@ -1,5 +1,7 @@
-import { ADD_PRODUCT, DELETE_PRODUCT, GET_PRODUCT } from "../type";
+import { ADD_PRODUCT, DELETE_PRODUCT, GET_PRODUCT, VIEW_PRODUCT } from "../type";
 import axios from "axios";
+
+
 
 
 //get-data
@@ -44,17 +46,17 @@ export const addProduct = (productData) => {
     }
 }
 
-//update-data
-export const update = (data) =>({
-    type : ADD_PRODUCT,
-    payload : data,
+//view-data
+export const viewData = (id) =>({
+    type : VIEW_PRODUCT,
+    payload : id,
 })
 
 
-export const updateData = (id) => {
-    return async (dispatch) => {
-        const res = await axios.get(`http://localhost:3003/product/${id}`);
-        dispatch(update(res.data))
-    }
-}
+// export const viewData = (id) => {
+//     return async (dispatch) => {
+//         const res = await axios.get(`http://localhost:3003/product/${id}`);
+//         dispatch(view(res.data.id))
+//     }
+// }
 
