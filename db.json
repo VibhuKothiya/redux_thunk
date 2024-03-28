@@ -1,38 +1,31 @@
 {
   "product": [
     {
-      "id": "B07HGLBZ5R",
-      "name": "Echo Dot (3rd Gen) - Smart speaker with Alexa",
-      "price": 39.99,
-      "description": "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small spaces.",
-      "category": "Electronics"
-    },
-    {
       "id": "B07Q6VZ1H9",
       "name": "Fire TV Stick 4K streaming device with Alexa Voice Remote",
       "price": 49.99,
-      "description": "The most powerful 4K streaming media stick with a new Wi-Fi antenna design optimized for 4K Ultra HD streaming.",
+      "description": "The most powerful 4K streaming media stick.",
       "category": "Electronics"
     },
     {
       "id": "B08CVR3J1K",
       "name": "Kindle Paperwhite – Now Waterproof with 2x the Storage",
       "price": 129.99,
-      "description": "Now available in Black, Twilight Blue, Plum, or Sage. The thinnest, lightest Kindle Paperwhite yet—with a flush-front design and 300 ppi glare-free display that reads like real paper even in bright sunlight.",
+      "description": "Now available in Black, Twilight Blue, Plum, or Sage.",
       "category": "Electronics"
     },
     {
       "id": "B08CVRKCK4",
       "name": "All-new Fire HD 8 tablet, 8\" HD display, 32 GB, designed for portable entertainment",
       "price": 89.99,
-      "description": "8\" HD display, 2X the storage (32 or 64 GB of internal storage and up to 1 TB with microSD card) + 2 GB RAM. 10th generation (2020 release).",
+      "description": "8\" HD display, 2X the storage.",
       "category": "Electronics"
     },
     {
       "id": "B08DHJ2J6K",
       "name": "Blink Mini – Compact indoor plug-in smart security camera",
       "price": 34.99,
-      "description": "1080P HD indoor, plug-in security camera with motion detection and two way audio that lets you monitor the inside of your home day and night.",
+      "description": "1080P HD indoor, plug-in security camera with motion detection and two way audio.",
       "category": "Electronics"
     },
     {
@@ -50,9 +43,23 @@
       "category": "catagory A"
     },
     {
+      "id": "B07HGLBZ5R",
+      "name": "Echo Dot (3rd Gen) - Smart speaker with Alexa",
+      "price": 39.99,
+      "description": "Meet Echo Dot - Our most popular smart speaker with a fabric design.",
+      "category": "Electronics"
+    },
+    {
+      "id": "B07HGLBZ5R",
+      "name": "Echo Dot (3rd Gen) - Smart speaker with Alexa",
+      "price": "400",
+      "description": "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small spaces.",
+      "category": "Electronics"
+    },
+    {
       "id": "bbb7",
       "name": "Ring",
-      "price": "400",
+      "price": "500",
       "description": "this is ring",
       "category": "B"
     }

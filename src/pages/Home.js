@@ -16,8 +16,6 @@ import FormModal from '../component/FormModal';
 import { viewData } from '../store/actions/productAction';
 
 
-
-
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -58,12 +56,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const Home = () => {
   const [open, setOpen] = React.useState(false);
+  const [viewId, setviewId] = React.useState(null);
 
   const distpatch = useDispatch();
-  const oldData = useSelector((state) => state.Data.data);
-
+  
   //get-data
-  const { product, error, loading } = useSelector(state => state.Data)
+  const { product } = useSelector(state => state.Data)
 
   useEffect(() => {
     distpatch(getProduct())
@@ -79,20 +77,20 @@ const Home = () => {
   //view-data
   const view_Data = (id) => {
     setOpen(true);
+    setviewId(id)
     distpatch(viewData(id))
-    
   }
 
-   
+
 
   return (
     <>
-    <section style={{marginBottom: '20px'}}>
-    <Navbar />
-    </section>
-    <section style={{marginBottom: '20px'}}>
-    <FormModal />
-    </section>
+      <section style={{ marginBottom: '20px' }}>
+        <Navbar />
+      </section>
+      {/* <section style={{ marginBottom: '20px' }}>
+        <FormModal />
+      </section> */}
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -114,11 +112,11 @@ const Home = () => {
                 <StyledTableCell align="center">{val.name}</StyledTableCell>
                 <StyledTableCell align="center">{val.price}</StyledTableCell>
                 <StyledTableCell align="center">{val.description}</StyledTableCell>
-                <StyledTableCell align="center">
-                  <Button style={{ margin: '2px' }} variant="contained" color='secondary' onClick={() => handleDelet(val.id)}>Delete</Button>
-                  <Button variant="outlined" onClick={() => view_Data(val.id)}>
-                Edit
-            </Button>
+                <StyledTableCell align="center" style={{ display:'flex' }}>
+                  <Button style={{ margin: '2px', fontSize: '25px'}}  onClick={() => handleDelet(val.id)}><i class="fa-solid fa-trash-can"></i></Button>
+                  <Button style={{ margin: '2px', fontSize: '25px' }} onClick={() => view_Data(val.id)}>
+                  <i class="fa-solid fa-pen-to-square"></i>
+                  </Button>
                   {/* <Button variant="contained" color='primary' onClick={() => view_Data(val.id)}>Edit</Button> */}
                 </StyledTableCell>
               </StyledTableRow>
@@ -126,7 +124,7 @@ const Home = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      <FormModal/>
+      {viewId && <FormModal viewId={viewId} />}
     </>
 
   )

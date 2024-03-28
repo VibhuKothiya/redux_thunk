@@ -80,21 +80,22 @@ export default function SearchAppBar() {
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                     >
                         <Link to='/' style={{ margin: '15px', textDecoration: 'none', color: '#ffff' }}>Home</Link>
-                        
-                            
+                                                 
                         
                         <Link to='/Contact' style={{ margin: '15px', textDecoration: 'none', color: '#ffff' }}>Contact</Link>
                     </Typography>
                     
-                    <Search>
+                    <Search >
                         <SearchIconWrapper>
                             <SearchIcon />
                         </SearchIconWrapper>
                         <StyledInputBase
                             placeholder="Search…"
                             inputProps={{ 'aria-label': 'search' }}
+                            
                         />
                     </Search>
+                    <FormModal />
                 </Toolbar>
             </AppBar>
         </Box>

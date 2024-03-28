@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -7,46 +7,58 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { addProduct } from '../store/actions/productAction';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { Update_data } from '../store/actions/productAction';
 
-export default function FormModal() {
+export default function FormModal({ viewId }) {
     const dispatch = useDispatch()
     const [open, setOpen] = React.useState(false);
-    const [data, setData] = useState({});
-    const {id} = useParams()
+    const [data, setData] = useState({});   
+    
+        
 
     const handleClickOpen = () => {
         setOpen(true);
     };
 
     const handleClose = () => {
-
         setOpen(false);
     };
 
     const handleInput = (e) => {
-
-        setData({...data, [e.target.name] : e.target.value});
+        setData({ ...data, [e.target.name]: e.target.value });
     }
 
     const AddData = () => {
+        if(!data.name || !data.price || !data.description){
+            alert("Fill all the data");
+            return 
+        }
         dispatch(addProduct(data))
+        
         setOpen(false);
     }
 
     useEffect(() => {
-        if(id){
-          axios.get(`http://localhost:3003/product/${id}`).then((res)=>{
+        if (viewId) {
+            setOpen(true)
+            axios.get(`http://localhost:3003/product/${viewId}`).then((res) => {
                 setData(res.data)
-          })
+            })
         }
-      }) 
+    }, [viewId]);
 
+    //update-data
+    const UpdateData = () =>{
+        dispatch(Update_data(data));
+        setOpen(false)
+    }
+
+    
     return (
         <React.Fragment>
-            <Button variant="outlined" onClick={handleClickOpen}>
+            <Button variant='outline' style={{color : 'white', fontWeight: '500', fontSize: '18px', display: 'flex', justifyContent: 'space-between'}} onClick={handleClickOpen}>
                 Add Product
             </Button>
             <Dialog
@@ -64,17 +76,25 @@ export default function FormModal() {
                         handleClose();
                     },
                 }}
-            >                                
+            >
                 <DialogContent>
-                    <TextField id="standard-basic" name='name' label="Name" variant="standard" onChange={handleInput} value={data.name}/><br />                 
-                    <TextField id="standard-basic" name='price' label="Price" variant="standard" onChange={handleInput} value={data.price}/><br />
-                    <TextField id="standard-basic" name='description' label="Description" variant="standard" onChange={handleInput} value={data.description}/><br />
-                    <TextField id="standard-basic" name='category' label="Catagory" variant="standard" onChange={handleInput}/><br />
-                    
+                    <TextField id="standard-basic" name='name' label="Name" variant="standard" onChange={handleInput} value={data.name} /><br />
+                    <TextField id="standard-basic" name='price' label="Price" variant="standard" onChange={handleInput} value={data.price} /><br />
+                    <TextField id="standard-basic" name='description' label="Description" variant="standard" onChange={handleInput} value={data.description} /><br />
+                    <TextField id="standard-basic" name='category' label="Catagory" variant="standard" onChange={handleInput} /><br />
+
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button style={{ margin: '10px' }} variant="contained" onClick={AddData}>Submit</Button>
+
+                    <Button style={{ margin: '10px' }} variant="contained" onClick={() => {
+                        if(data.id && data){
+                            UpdateData()
+                        }
+                        else{
+                            AddData();
+                        }
+                    }}>{data.id && data? "upadte": "submit"}</Button>
 
                 </DialogActions>
             </Dialog>

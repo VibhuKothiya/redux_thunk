@@ -1,11 +1,11 @@
-import { DELETE_PRODUCT, GET_PRODUCT, ADD_PRODUCT, VIEW_PRODUCT} from "../type";
+import { DELETE_PRODUCT, GET_PRODUCT, ADD_PRODUCT, VIEW_PRODUCT, UPDATE_PRODUCT } from "../type";
 
 let initialState = {
     product: [],
     error: null,
     loading: false,
     id: null,
-    
+
 }
 
 export const productReducer = (state = initialState, action) => {
@@ -38,8 +38,20 @@ export const productReducer = (state = initialState, action) => {
                 id: action.payload,
                 loading: false
             }
-        
 
+        case UPDATE_PRODUCT:
+            return {
+                ...state,
+                product: state.product.map((e) => {
+                    if (e.id === action.payload.id) {
+                        return action.payload;
+                    }
+                    else {
+                        return e
+                    }
+                }),
+                id: null
+            }
 
         default:
             return state;
