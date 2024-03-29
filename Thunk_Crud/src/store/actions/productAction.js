@@ -7,7 +7,7 @@ export const getDataSuccess = (data) => ({
     payload : data
 })
 
-export const getProduct = () =>{
+export const getProduct = () => {
     return async (dispatch) => {
         const res = await axios.get('http://localhost:3003/product')
         dispatch(getDataSuccess(res.data))

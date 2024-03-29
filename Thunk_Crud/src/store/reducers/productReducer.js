@@ -47,7 +47,7 @@ export const productReducer = (state = initialState, action) => {
                         return action.payload;
                     }
                     else {
-                        return e
+                        return e;
                     }
                 }),
                 id: null
