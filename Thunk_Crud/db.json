@@ -24,7 +24,7 @@
     {
       "id": "B08DHJ2J6K",
       "name": "Blink Mini – Compact indoor plug-in smart security camera",
-      "price": 34.99,
+      "price": "600",
       "description": "1080P HD indoor, plug-in security camera with motion detection and two way audio.",
       "category": "Electronics"
     },
@@ -38,14 +38,14 @@
     {
       "id": "430c",
       "name": "saree",
-      "price": "344",
+      "price": "700",
       "description": "this is saree",
       "category": "catagory A"
     },
     {
       "id": "B07HGLBZ5R",
       "name": "Echo Dot (3rd Gen) - Smart speaker with Alexa",
-      "price": 39.99,
+      "price": "500",
       "description": "Meet Echo Dot - Our most popular smart speaker with a fabric design.",
       "category": "Electronics"
     },

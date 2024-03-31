@@ -11,6 +11,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
 import FormModal from './FormModal';
+import LogoutButton from './LogoutButton';
+import '../App.css'
 
 
 
@@ -61,10 +63,11 @@ export default function SearchAppBar() {
 
     return (
         <>
-        <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
-                <Toolbar>
-                    <IconButton
+        <Box  sx={{ flexGrow: 1 }}>
+            <AppBar  position="static">
+                <Toolbar className='navbar'>
+                    <IconButton 
+                        className='button-style'
                         size="large"
                         edge="start"
                         color="inherit"
@@ -74,15 +77,16 @@ export default function SearchAppBar() {
                         <MenuIcon />
                     </IconButton>
                     <Typography
+                    
                         variant="h6"
                         noWrap
                         component="div"
                         sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                     >
-                        <Link to='/' style={{ margin: '15px', textDecoration: 'none', color: '#ffff' }}>Home</Link>
+                        <Link to='/' className='button-style' style={{ margin: '15px', textDecoration: 'none', color: '#ffff' }}>Home</Link>
                                                  
                         
-                        <Link to='/Contact' style={{ margin: '15px', textDecoration: 'none', color: '#ffff' }}>Contact</Link>
+                        <Link to='/Contact' className='button-style'  style={{ margin: '15px', textDecoration: 'none', color: '#ffff' }}>Contact</Link>
                     </Typography>
                     
                     <Search >
@@ -96,6 +100,7 @@ export default function SearchAppBar() {
                         />
                     </Search>
                     <FormModal />
+                    <LogoutButton/>
                 </Toolbar>
             </AppBar>
         </Box>

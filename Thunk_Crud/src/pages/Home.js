@@ -14,9 +14,10 @@ import { deleteProduct, getProduct } from '../store/actions/productAction';
 import Navbar from '../component/Navbar';
 import FormModal from '../component/FormModal';
 import { viewData } from '../store/actions/productAction';
+import '../App.css'
 
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
+const td = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
@@ -59,6 +60,8 @@ const Home = () => {
   const [viewId, setviewId] = React.useState(null);
 
   const distpatch = useDispatch();
+
+  
   
   //get-data
   const { product } = useSelector(state => state.Data)
@@ -93,36 +96,36 @@ const Home = () => {
       </section> */}
 
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell align="center">Id</StyledTableCell>
-              <StyledTableCell align="center">Name</StyledTableCell>
-              <StyledTableCell align="center">Price</StyledTableCell>
-              <StyledTableCell align="center">Description</StyledTableCell>
-              <StyledTableCell align="center">Action</StyledTableCell>
-            </TableRow>
+        <table sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableHead style={{backgroundColor: '#459c98', color:'#fff'}}>
+            <tr>
+              <td align="center">Id</td>
+              <td align="center">Name</td>
+              <td align="center">Price</td>
+              <td align="center">Description</td>
+              <td align="center">Action</td>
+            </tr>
           </TableHead>
           <TableBody>
             {product && product.map((val, ind) => (
-              <StyledTableRow key={ind}>
-                <StyledTableCell component="th" scope="row">
+              <StyledTableRow key={ind} >
+                <td style={{fontSize: '15px'}} component="th" scope="row">
                   {val.id}
-                </StyledTableCell>
-                <StyledTableCell align="center">{val.name}</StyledTableCell>
-                <StyledTableCell align="center">{val.price}</StyledTableCell>
-                <StyledTableCell align="center">{val.description}</StyledTableCell>
-                <StyledTableCell align="center" style={{ display:'flex' }}>
-                  <Button style={{ margin: '2px', fontSize: '25px'}}  onClick={() => handleDelet(val.id)}><i class="fa-solid fa-trash-can"></i></Button>
-                  <Button style={{ margin: '2px', fontSize: '25px' }} onClick={() => view_Data(val.id)}>
+                </td>
+                <td style={{fontSize: '15px'}} align="center">{val.name}</td>
+                <td style={{fontSize: '15px'}} align="center">{val.price}</td>
+                <td style={{fontSize: '15px'}} align="center">{val.description}</td>
+                <td style={{fontSize: '15px', display:'flex'}} align="center" >
+                  <Button style={{ margin: '2px', fontSize: '22px', color: '#459c98'}}  onClick={() => handleDelet(val.id)}><i class="fa-solid fa-trash-can"></i></Button>
+                  <Button style={{ margin: '2px', fontSize: '22px', color: '#459c98'}} onClick={() => view_Data(val.id)}>
                   <i class="fa-solid fa-pen-to-square"></i>
                   </Button>
                   {/* <Button variant="contained" color='primary' onClick={() => view_Data(val.id)}>Edit</Button> */}
-                </StyledTableCell>
+                </td>
               </StyledTableRow>
             ))}
           </TableBody>
-        </Table>
+        </table>
       </TableContainer>
       {viewId && <FormModal viewId={viewId} />}
     </>

@@ -2,3 +2,54 @@
   width : 350px;
   height: 400px;
 }
+.navbar{
+  background-color:#459c98
+}
+.button-style{
+  
+    background: #459c98;
+    font-size: 16px;
+    padding: 7px;
+    color: #ffff;
+    outline: none;
+    border: none;
+    border: 1px solid #200648;
+    border-radius: 10px;
+    transition: 0.4s;
+    box-shadow: -1px -1px 2px #160122, 1px 1px 4px #0c0015;
+    cursor: pointer;
+    margin: 15px;
+    &:active {
+        scale: 0.5;
+    }
+
+    &:hover {
+        border: 1px solid #430c94;
+    }
+}
+
+table {
+  margin-top: 30px;
+  width: 100%;
+  background: #ffff;
+  text-align: center;
+  box-shadow: -3px -3px 3px #160122, 3px 3px 6px #0c0015;
+  border: 1px solid grey;
+  border-radius: 5px;
+  border-collapse: collapse;
+  border-spacing: 0px;
+
+}
+table tr {
+  border: none;
+  border-radius: 3px;
+  
+
+}
+
+table tr td,
+th {
+  padding: 5px;
+  font-size: 18px;
+  border-color: #200648;
+}

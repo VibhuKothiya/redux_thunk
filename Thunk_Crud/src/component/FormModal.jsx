@@ -9,6 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { addProduct } from '../store/actions/productAction';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import '../App.css'
 import { Update_data } from '../store/actions/productAction';
 
 export default function FormModal({ viewId }) {
@@ -58,9 +59,9 @@ export default function FormModal({ viewId }) {
     
     return (
         <React.Fragment>
-            <Button variant='outline' style={{color : 'white', fontWeight: '500', fontSize: '18px', display: 'flex', justifyContent: 'space-between'}} onClick={handleClickOpen}>
+            <button className='button-style' onClick={handleClickOpen}>
                 Add Product
-            </Button>
+            </button>
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -81,20 +82,20 @@ export default function FormModal({ viewId }) {
                     <TextField id="standard-basic" name='name' label="Name" variant="standard" onChange={handleInput} value={data.name} /><br />
                     <TextField id="standard-basic" name='price' label="Price" variant="standard" onChange={handleInput} value={data.price} /><br />
                     <TextField id="standard-basic" name='description' label="Description" variant="standard" onChange={handleInput} value={data.description} /><br />
-                    <TextField id="standard-basic" name='category' label="Catagory" variant="standard" onChange={handleInput} /><br />
+                    
 
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
+                    <button className='button-style' onClick={handleClose}>Cancel</button>
 
-                    <Button style={{ margin: '10px' }} variant="contained" onClick={() => {
+                    <button className='button-style' style={{ margin: '10px' }} variant="contained" onClick={() => {
                         if(data.id && data){
                             UpdateData()
                         }
                         else{
                             AddData();
                         }
-                    }}>{data.id && data? "upadte": "submit"}</Button>
+                    }}>{data.id && data? "upadte": "submit"}</button>
 
                 </DialogActions>
             </Dialog>
